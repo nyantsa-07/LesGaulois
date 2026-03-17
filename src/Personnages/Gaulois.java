@@ -31,15 +31,22 @@ public class Gaulois {
 	public String toString() {
 		return "Gaulois [nom=" + nom + ", force=" + force + "]";
 	}
-	
+
 	public void frapper(Romain romain) {
+		int forcerecu;
+		forcerecu = force * effetPotion;
 		System.out.println(nom + " envoie un grang coup dans la mâchoire de " + romain.getNom());
-		romain.recevoirCoup(force / 3);
+		romain.recevoirCoup(forcerecu / 3);
+		if (effetPotion > 1) {
+			effetPotion = effetPotion - 1;
+		}
+
 		
+
 	}
-	
+
 	public void boirePotion(int forcePotion) {
-		
+		effetPotion = forcePotion;
 	}
 
 	public static void main(String[] args) {

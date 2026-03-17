@@ -12,7 +12,13 @@ public class TestGaulois {
 
 		Romain minus;
 		minus = new Romain("Minus", 6);
+		
+		Romain brutus;
+		brutus = new Romain("Brutus", 14);
 
+		Druide panoramix;
+		panoramix = new Druide("Panoramix", 2);
+		
 		asterix.parler("Bonjour Obélix");
 		obelix.parler("Bonjour Astérix. Ca te dirais d'aller chasser des\r\n" + "sangliers ?)");
 		asterix.parler("Oui très bonne idée.");
@@ -22,6 +28,14 @@ public class TestGaulois {
 
 		for (int i = 0; i < 3; i++) {
 			asterix.frapper(minus);
+		}
+		Chaudron potion;
+		potion = panoramix.fabriquerPotion(4,3);
+		panoramix.booster(obelix, potion);
+		panoramix.booster(asterix, potion);
+		
+		for (int i = 0; i < 3; i++) {
+			asterix.frapper(brutus);
 		}
 	}
 
