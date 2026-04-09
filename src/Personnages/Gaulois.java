@@ -1,12 +1,15 @@
 package Personnages;
 
 import village_gaulois.*;
+import objects.*;
 
 public class Gaulois {
 	private String nom;
-	private int force;
+//	private int force;
 	private int effetPotion = 1;
 	private Village village = null;
+	private int force, nb_trophees;
+	private Equipement trophees[] = new Equipement[100];
 
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -34,25 +37,25 @@ public class Gaulois {
 		System.out.println(prendreParole() + "\"" + texte + "\"");
 	}
 
-	private String prendreParole() {
-		return "Le gaulois " + nom + " : ";
-	}
+//	private String prendreParole() {
+//		return "Le gaulois " + nom + " : ";
+//	}
 
-	@Override
-	public String toString() {
-		return "Gaulois [nom=" + nom + ", force=" + force + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Gaulois [nom=" + nom + ", force=" + force + "]";
+//	}
 
-	public void frapper(Romain romain) {
-		int forcerecu;
-		forcerecu = force * effetPotion;
-		System.out.println(nom + " envoie un grang coup dans la mâchoire de " + romain.getNom());
-		romain.recevoirCoup(forcerecu / 3);
-		if (effetPotion > 1) {
-			effetPotion = effetPotion - 1;
-		}
+//	public void frapper(Romain romain) {
+//		int forcerecu;
+//		forcerecu = force * effetPotion;
+//		System.out.println(nom + " envoie un grang coup dans la mâchoire de " + romain.getNom());
+//		romain.recevoirCoup(forcerecu / 3);
+//		if (effetPotion > 1) {
+//			effetPotion = effetPotion - 1;
+//		}
 
-	}
+//	}
 
 	public void boirePotion(int forcePotion) {
 		effetPotion = forcePotion;
@@ -60,14 +63,27 @@ public class Gaulois {
 
 	public void sePresenter() {
 		if (getVillage() == null) {
-			parler(" Bonjour,je m'appelle "+ getNom() + ". Je voyage de villages en villages. " );
+			parler(" Bonjour,je m'appelle " + getNom() + ". Je voyage de villages en villages. ");
 		} else if (getVillage().getChef() == this) {
-			parler(" Bonjour,je m'appelle "+ getNom() + ". Je suis le chef du village: " + getVillage().getNom() + "." );
+			parler(" Bonjour,je m'appelle " + getNom() + ". Je suis le chef du village: " + getVillage().getNom()
+					+ ".");
+		} else {
+			parler(" Bonjour,je m'appelle " + getNom() + ". J'habite au village: " + getVillage().getNom() + ".");
 		}
-		else {
-			parler(" Bonjour,je m'appelle "+ getNom() + ". J'habite au village: " + getVillage().getNom() + "." );
+
+	}
+
+	public void frapper(Romain romain) {
+		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
+		Equipement trophees[] = romain.recevoirCoup((force / 3) * effetPotion);
+		effetPotion--;
+		if (effetPotion < 1) {
+			effetPotion = 1;
 		}
-		
+		for (int i = 0; trophees != null && i < trophees.length; i++, nb_trophees++) {
+			this.trophees[nb_trophees] = trophees[i];
+		}
+		return;
 	}
 
 	public static void main(String[] args) {
