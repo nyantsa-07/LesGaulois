@@ -6,7 +6,6 @@ public class Romain {
 	private String nom;
 	private int force;
 	private int nbEquipement = 0;
-	private String texte;
 	private Equipement[] tab = new Equipement[2];
 
 	public Romain(String nom, int force) {
