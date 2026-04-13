@@ -31,8 +31,8 @@ public class TestGaulois {
 		}
 		Chaudron potion;
 		potion = panoramix.fabriquerPotion(4,3);
-		panoramix.booster(obelix, potion);
-		panoramix.booster(asterix, potion);
+		panoramix.booster(obelix);
+		panoramix.booster(asterix);
 		
 		for (int i = 0; i < 3; i++) {
 			asterix.frapper(brutus);

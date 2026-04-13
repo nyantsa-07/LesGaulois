@@ -3,6 +3,7 @@ package Personnages;
 public class Druide {
 	private String nom;
 	private int force;
+	private Chaudron potion;
 
 	public Druide(String nom, int force) {
 		this.nom = nom;
@@ -23,14 +24,13 @@ public class Druide {
 	}
 
 	public Chaudron fabriquerPotion(int quantite, int forcePotion) {
-		Chaudron potion;
-		potion = new Chaudron(quantite, forcePotion);
+		potion = new Chaudron (quantite,forcePotion);
 		potion.remplirChaudron(quantite, forcePotion);
 		parler("J'ai concocté " + quantite + " doses de potion magique. " + "Elle a une force de " + forcePotion + ".");
 		return potion;
 	}
 
-	public void booster(Gaulois gaulois, Chaudron potion) {
+	public void booster(Gaulois gaulois) {
 		String nom_g;
 		nom_g = gaulois.getNom();		
 		if (potion.resterPotion()) {
